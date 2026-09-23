@@ -1,6 +1,6 @@
 # Bev
 
-**Ternary weights. One-token decisions. Typed answers.**
+**7.21 GB model file · 7.28 GiB measured CPU RAM · 8.18 GiB observed Mac Metal process RSS · 8.30 GiB observed NVIDIA VRAM.**
 
 [![Release](https://img.shields.io/github/v/release/Reza2kn/Bev)](https://github.com/Reza2kn/Bev/releases)
 [![Weights on Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Bev-yellow)](https://huggingface.co/Reza2kn/Bev)
@@ -19,24 +19,26 @@ Bev runs [Jevfire](https://github.com/kikoncuo/jevfire)-style decision scoring o
 | Options | 2–255 candidates per field, validated with the loaded tokenizer |
 | Method | One next-token scoring step per field; JSON assembled by the API |
 | Model file | **7,206,168,928 bytes**, PQ2_0 ternary weights |
-| Measured GPU use | About **8,504 MiB** for the serving process on an RTX 5080 Laptop GPU |
-| Validated setup | Linux x86_64, NVIDIA GPU, pinned Prism CUDA 12.8 runtime |
+| Measured system RAM | **7,630,416 KiB peak resident (7.28 GiB)** during one CPU-only inference on Stallion, one 4,096-token slot; **7.12 GiB** loaded idle |
+| Measured Mac Metal memory | **Up to 8,580,912 KiB process RSS (8.18 GiB)** sampled during 14/14 API checks on an Apple M2 with 24 GiB unified memory; total device pressure was not measured |
+| Measured GPU memory | **8,504 MiB (8.30 GiB)** for the original Linux CUDA serving process, two 16,384-token slots; observed snapshot, not a peak |
+| Available paths | Linux NVIDIA/CUDA validated; macOS Apple Silicon/Metal validated with 14/14 API checks; Linux CPU inference checked; Windows CPU source-build path untested |
 | Persian benchmark | **95.42% Choice · 95.00% Noul · 87.50% Score** |
 
-Memory is an observed process snapshot, not a minimum or peak-memory guarantee. Two inference slots provide 16,384 tokens per field by default. See [installation requirements](docs/INSTALL.md) and [benchmark conditions](docs/BENCHMARKS.md).
+**For CPU-only use, start with 16 GB of system RAM; 8 GB is unverified and likely too tight.** CPU RAM includes memory-mapped model pages and varies with context length and concurrent requests. Apple Silicon uses unified memory, so CPU RAM and Metal allocations are not additive like separate host RAM and discrete VRAM. The published Persian benchmark used the Linux CUDA path with two 16,384-token slots; the portable launcher defaults to one 4,096-token slot to reduce memory. See [memory and platform details](docs/INSTALL.md) and [benchmark conditions](docs/BENCHMARKS.md).
 
 ## Quick start
 
-On a supported Linux GPU host with the [prerequisites](docs/INSTALL.md):
+On the validated Linux NVIDIA host with the [prerequisites](docs/INSTALL.md):
 
 ```sh
-git clone --branch v0.1.1 https://github.com/Reza2kn/Bev.git
+git clone --branch v0.1.2 https://github.com/Reza2kn/Bev.git
 cd Bev
 bash scripts/install.sh
 bash scripts/start-services.sh
 ```
 
-The installer verifies the pinned model and runtime downloads, builds the small native extension, and installs the Python API. The API listens on `127.0.0.1:18781`; interactive documentation is at [localhost:18781/docs](http://127.0.0.1:18781/docs).
+For **macOS Apple Silicon (Metal)** or **Windows/Linux CPU**, use the [portable source installer](docs/INSTALL.md#macos-windows-and-linux-cpu): `python3 scripts/install-portable.py` (Windows: `py -3 scripts/install-portable.py`), then run `scripts/serve.py` with the installed Python. The portable path builds the same pinned Prism source and Bev scoring patch. The original Linux CUDA installer verifies the pinned model and runtime downloads, builds the small native extension, and installs the Python API. The API listens on `127.0.0.1:18781`; interactive documentation is at [localhost:18781/docs](http://127.0.0.1:18781/docs).
 
 ```sh
 curl --fail-with-body http://127.0.0.1:18781/v1/decisions \
@@ -72,7 +74,7 @@ Choice returns the winning option. Noul returns the probability assigned to true
 
 The full [Jev Persian Benchmark](https://github.com/ArmanJR/Jev-Persian-Benchmark) used its original dataset, batches and scorer. All **624/624 answers** were valid across **106/106 completed requests**, with no model mismatches.
 
-| Main test | Bev v0.1.1 | Published Jev 1.13.0 |
+| Main test | Bev (v0.1.1 evaluation) | Published Jev 1.13.0 |
 |---|---:|---:|
 | Choice: exact option | **229/240 · 95.42%** | 239/240 · 99.58% |
 | Noul: yes/no | **152/160 · 95.00%** | 159/160 · 99.38% |

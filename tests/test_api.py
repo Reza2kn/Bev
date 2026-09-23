@@ -91,7 +91,7 @@ async def test_health_source_provenance_is_frozen_at_startup(monkeypatch):
         await engine.client.aclose()
     assert first["supported_primitives"] == ["choice", "noul", "score"]
     provenance = first["service_provenance"]
-    assert provenance["version"] == "0.1.1"
+    assert provenance["version"] == "0.1.2"
     assert set(provenance["startup_source_sha256"]) == {"__init__.py", "app.py", "core.py", "models.py"}
     assert all(len(v) == 64 for v in provenance["startup_source_sha256"].values())
     assert second["service_provenance"] == provenance

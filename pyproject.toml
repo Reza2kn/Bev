@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bev-decisions"
-version = "0.1.1"
+version = "0.1.2"
 description = "Exact categorical scoring for ternary Bonsai through Prism llama.cpp."
 readme = "README.md"
 requires-python = ">=3.11"

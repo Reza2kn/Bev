@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Small functional and latency checks; run on Stallion, not the Mac.
+"""Small functional and latency checks for any supported backend.
 
 These hand-authored checks verify API behavior. They are not benchmark accuracy.
 """

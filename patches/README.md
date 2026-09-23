@@ -19,6 +19,13 @@ or normalize probabilities over the selected IDs. The original serializer's
 finite sentinel for log(0) still applies. Changing summation order can create
 small floating-point differences from the sorted full-vocabulary reference.
 
+## Platform builds
+
+The portable source installer (`scripts/install-portable.py`) builds the same
+pinned patch with CPU on Linux/Windows or Metal on macOS. It does not load the
+prebuilt Linux CUDA plugin. The original Linux NVIDIA path below remains the
+fully benchmarked configuration.
+
 ## Build without recompiling CUDA
 
 Use the main installer on a Linux x86_64 NVIDIA host. See the

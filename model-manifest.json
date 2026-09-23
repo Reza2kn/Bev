@@ -1,6 +1,6 @@
 {
   "name": "Bev",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "model_id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
   "model_revision": "6ed5e12bf84b7a63069882c91dd9e9218647d17b",
   "model_file": "Ternary-Bonsai-2-27B-PQ2_0.gguf",
@@ -25,5 +25,10 @@
   "code_license": "MIT",
   "github": "https://github.com/Reza2kn/Bev",
   "huggingface": "https://huggingface.co/Reza2kn/Bev",
-  "weight_relationship": "Byte-identical redistribution of the pinned Prism GGUF; no new training or quantization."
+  "weight_relationship": "Byte-identical redistribution of the pinned Prism GGUF; no new training or quantization.",
+  "system_ram_cpu_kib_peak_observed": 7630416,
+  "system_ram_cpu_configuration": "Linux CPU; one 4096-token slot; one short selected-score request; VmHWM; includes file-backed resident pages",
+  "model_vram_mib_observation_type": "Linux CUDA serving-process snapshot; not a measured peak",
+  "macos_metal_sampled_max_rss_kib": 8580912,
+  "macos_metal_configuration": "Apple M2 with 24 GiB unified RAM; 4096-token single slot; 14/14 API smoke checks"
 }

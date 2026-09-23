@@ -4,7 +4,7 @@ Bev has a small Python API and a separate native model server. Install both from
 a clone or source release of this repository. The Python wheel contains the API;
 it does not bundle the model, CUDA libraries, or the native server.
 
-## Supported installation path
+## Validated Linux CUDA installation path
 
 - **Linux x86_64 with an NVIDIA GPU.** The validated machine used an RTX 5080
   Laptop GPU with 16,303 MiB VRAM and NVIDIA driver 580.178.04. Other NVIDIA cards
@@ -36,10 +36,9 @@ separately. Bev does not change system drivers or system CUDA installations, and
 does not require `nvcc`: it rebuilds host code while using pinned precompiled GPU
 kernels.
 
-macOS, Windows, WSL, ARM, AMD GPUs, CPU-only execution, and other quantization
-formats are outside this installer’s validated scope. The fact that upstream
-llama.cpp supports a platform does not establish that this pinned PQ2_0 runtime
-and loader have been verified there.
+This Linux CUDA installer is one path. The portable source-build installer below
+covers CPU on Linux/Windows and Metal on macOS. Each platform has its own
+validation status; do not infer GPU or benchmark parity across them.
 
 ## Install and start
 
@@ -150,3 +149,66 @@ The `benchmark` extra pins `typesafe-sdk==0.7.1`, used by the Persian benchmark
 runner. It does not download benchmark data or contact the hosted Jev API by
 itself. Tests use mocked inference responses; starting the service and running
 the smoke/parity checks perform actual model computation.
+
+## macOS, Windows, and Linux CPU
+
+The portable installer builds the **same pinned Prism source and selected-token
+patch** from source. It does not depend on the Linux CUDA plugin. It uses Metal
+on macOS by default and CPU on Windows/Linux by default. A source build requires
+CMake, Git, a C/C++ compiler and Python 3.11+. On macOS, install Xcode Command
+Line Tools or Xcode; on Windows, use Visual Studio 2022 C++ Build Tools and
+CMake. The model download is 7.21 GB; allow at least 11 GB free disk space.
+
+| Platform | Backend | State |
+|---|---|---|
+| Linux x86_64 NVIDIA | CUDA 12.8 | Full API and Persian benchmark validated on Stallion |
+| Linux x86_64 | CPU | Pinned patched server loaded, returned selected-token scores; 4,096-token memory measured on Stallion |
+| macOS Apple Silicon | Metal | Patched source built and **14/14 API smoke checks passed** on an Apple M2 Mac with 24 GiB unified memory |
+| macOS Intel | Metal or CPU | Installer available; inference not independently measured |
+| Windows x64 | CPU | Source-build installer available; native inference not independently measured |
+
+From the Bev checkout on macOS or Linux CPU:
+
+```sh
+python3 scripts/install-portable.py
+"$HOME/.local/share/bev/.venv/bin/python" scripts/serve.py
+```
+
+In PowerShell on Windows:
+
+```powershell
+py -3 scripts/install-portable.py
+& "$HOME/.local/share/bev/.venv/Scripts/python.exe" scripts/serve.py
+```
+
+The two services run in the foreground. Press Ctrl+C to stop them. Verify actual
+inference, not just startup, with a POST to `/v1/decisions` using
+`examples/support-request.json`. For CPU on macOS, set `BEV_BACKEND=cpu` during
+both installation and serving. `BEV_ROOT` selects another installation directory.
+The portable launcher defaults to **one 4,096-token slot** to conserve memory;
+set `BEV_CTX_SIZE` and `BEV_PARALLEL` to change it. More context or slots require
+more RAM. Windows and macOS Intel remain community test targets; please report
+actual model loading and response traces before treating them as validated.
+
+### Memory: read this before installing
+
+The model file itself is **7,206,168,928 bytes (6.71 GiB)** on disk. On Stallion,
+the pinned patched server with **CPU only**, one 4,096-token slot, Q8 KV cache,
+and a short one-token selected-score request reached **7,630,416 KiB (7.28 GiB)
+resident system RAM** according to Linux `VmHWM`; loaded idle RSS was about
+7.12 GiB. Resident memory includes model pages mapped from the file, so it is
+not the same as anonymous/private RAM and must not be added to the file size.
+On an Apple M2 with 24 GiB unified memory, the portable Metal backend
+passed **14/14 functional API checks** and its process RSS was sampled up to
+**8,580,912 KiB (8.18 GiB)**. This is not total unified-memory pressure
+or a guaranteed peak. The separate Linux CUDA benchmark configuration used an observed **8,504 MiB
+(8.30 GiB) GPU memory** on the RTX 5080 Laptop GPU with two 16,384-token slots.
+That GPU observation is not a peak and says nothing by itself about host RAM.
+
+For CPU-only use, **16 GB system RAM is the practical starting recommendation**.
+An 8 GB system is **not validated** and leaves too little headroom after this
+7.28 GiB process observation; avoid treating the measured RSS as a minimum
+requirement. Budget more than the measured numbers for the OS, API, request buffers,
+longer prompts, and context/slot growth. On Apple Silicon, Metal and CPU share
+physical memory; separate VRAM-plus-RAM arithmetic does not apply. These are
+observations on specific configurations, not minimum-device guarantees.

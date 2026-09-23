@@ -44,7 +44,11 @@ def main():
     prov = json.loads((root/'evaluations/persian-v1/provenance.json').read_text())
     sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
     for name, expected in prov['service']['source_sha256'].items():
-        assert sha(root/'bev'/name) == expected, f'Inference source changed: {name}'
+        if name == '__init__.py':
+            previous = (root/'bev'/name).read_text().replace('0.1.2', '0.1.1').encode()
+            assert hashlib.sha256(previous).hexdigest() == expected, 'Inference init changed beyond version string'
+        else:
+            assert sha(root/'bev'/name) == expected, f'Inference source changed: {name}'
     assert sha(root/'evaluations/persian-v1/summary.json') == prov['original_run_files_sha256']['summary.json']
     assert sha(root/'evaluations/persian-v1/runner.py') == prov['evaluation_wrapper_sha256']
     manifest = json.loads((root/'model-manifest.json').read_text())
@@ -55,7 +59,7 @@ def main():
     if issues:
         raise SystemExit('\n'.join(issues))
     print(json.dumps({'passed': True, 'release_files': len(names), 'relative_links': 'valid',
-                      'benchmark_source_hashes': 'identical', 'private_path_and_credential_scan': 'clear'}))
+                      'benchmark_source_hashes': 'app/core/models identical; init version-only', 'private_path_and_credential_scan': 'clear'}))
 
 
 if __name__ == '__main__':

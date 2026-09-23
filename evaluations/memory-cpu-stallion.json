@@ -1,0 +1,19 @@
+{
+  "date_utc": "2026-09-23",
+  "host": "Stallion, Linux x86_64",
+  "runtime_commit": "9a9394a895b96003ca842a6041cb28ac49a108f7",
+  "model_sha256": "3907dc1658db1f78a9826bf8d5bcb8dc65db0d466388937af57f2294fae62ec1",
+  "backend": "CPU only, n_gpu_layers=0",
+  "context_total_tokens": 4096,
+  "parallel_slots": 1,
+  "kv_type": "q8_0",
+  "request": "One short /completion request with selected_token_ids=[1,2] and n_predict=1; response returned HTTP 200 with one token.",
+  "loaded_idle_vm_rss_kib": 7468732,
+  "post_inference_vm_hwm_kib": 7630416,
+  "post_inference_vm_rss_kib": 7630416,
+  "post_inference_pss_kib": 7626623,
+  "post_inference_pss_file_kib": 7037583,
+  "post_inference_pss_anon_kib": 589040,
+  "measurement_source": "/proc/<owned Bev server PID>/status and smaps_rollup, immediately after the request",
+  "interpretation": "RSS includes file-backed resident model pages; this is an observed run, not a general minimum or controlled peak across arbitrary requests."
+}

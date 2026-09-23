@@ -40,3 +40,7 @@ benchmarks/**/requests.jsonl
 benchmarks/**/questions.jsonl
 benchmarks/**/answers.jsonl
 benchmarks/persian-*/report.md
+# Local cross-platform runtime validation
+.prism-macos-source/
+.prism-macos-build/
+.prism-macos-build-make/
