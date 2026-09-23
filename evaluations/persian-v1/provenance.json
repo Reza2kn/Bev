@@ -1,0 +1,521 @@
+{
+  "created_utc": "2026-09-23T17:41:08.152214+00:00",
+  "benchmark": "ArmanJR/Jev-Persian-Benchmark",
+  "upstream_revision": "ac218d96630da9d9cc08fd897868c4d3c7048b0d",
+  "suite": "full",
+  "requested_model": "bev-bonsai-27b",
+  "dataset_manifest": {
+    "revision": "1.0.0",
+    "review": "Second-pass author review; see data/REVIEW.md",
+    "counts": {
+      "choice": 240,
+      "noul": 160,
+      "score": 80
+    },
+    "repeat_scenarios": [
+      "s017",
+      "s025",
+      "s033",
+      "s041",
+      "s049",
+      "s057",
+      "s065",
+      "s073"
+    ],
+    "thresholds": {
+      "noul": 0.5,
+      "high_confidence": 0.8,
+      "score_tolerance": 0.5
+    },
+    "sha256": {
+      "scenarios.jsonl": "6b2187b7eda5078f57685a39ea5808492a8d698011a471be59355fb68199cac8",
+      "gold.jsonl": "7248399eab685ed032b7572f60ff21669ff4f1241427a099a08f6c3cc0ec5acc",
+      "pairs.json": "99203b7e48b00a3d34cc33ef67a7f81728cb421f96c8b7dd77fddc83bae43d58",
+      "smoke.jsonl": "8b302a1209c79cdc29e2a551a0f2d0629f5e15408febea07cd43f945ada8b6be",
+      "smoke_gold.jsonl": "b6c6f8cb580220444e9fc60cb5b57741d3c854025c9ca533587c5402952c6fbe"
+    }
+  },
+  "planned_requests": 106,
+  "planned_questions": 624,
+  "ordered_request_sha256": [
+    {
+      "job_id": "main-s001-0",
+      "sha256": "22988e537eed4d22b06357074b3e14d1bc0c5e322c62f02a8bd6fbef863d39a0"
+    },
+    {
+      "job_id": "main-s002-0",
+      "sha256": "d6b0361a929c2076ce412aaba45e5035b24eec22b29fedc628985db2709dfbbb"
+    },
+    {
+      "job_id": "main-s003-0",
+      "sha256": "e2c0a64974a1e7974427f9c15769ebea36178535845b12174b7cc453b3fbf41a"
+    },
+    {
+      "job_id": "main-s004-0",
+      "sha256": "ed39258ac9c9ef0fccec1d7f9975e98fcd0380585caa05d6540b769eb2ec350b"
+    },
+    {
+      "job_id": "main-s005-0",
+      "sha256": "d5f354d491ae0cb5cafd01983f00534f847660240b20dcbf46fd4a6ce210411a"
+    },
+    {
+      "job_id": "main-s006-0",
+      "sha256": "ddc38f0920ee4060f963aefc8a4264171255760475bf4c475ebb6f5562a7b680"
+    },
+    {
+      "job_id": "main-s007-0",
+      "sha256": "3b3fbed1e77d1668f7c7dfd8ab868b308eecbaeb3cd8464a7d92c59515a9b4f6"
+    },
+    {
+      "job_id": "main-s008-0",
+      "sha256": "e6bedd6b9aa494ee82749f3ee57b576e1ed834bc0625e18365a2a7758323ac93"
+    },
+    {
+      "job_id": "main-s009-0",
+      "sha256": "a7c315b4293e5d3fbd4bac648ab8dbec9bf2c67fc49d181a522502f84cb090df"
+    },
+    {
+      "job_id": "main-s010-0",
+      "sha256": "53668b97e9a94f28ea1c354e2902001919213d280148c2cb8263668575da684b"
+    },
+    {
+      "job_id": "main-s011-0",
+      "sha256": "2645392dc0e93c60a881de3a1edd53e387d06e9d6054528e50f0efe4fe5ffb8f"
+    },
+    {
+      "job_id": "main-s012-0",
+      "sha256": "95d4cfee344cfa73a6f4aa15cb095ce301f77d5b9d9c7b7bfaff53d13553594e"
+    },
+    {
+      "job_id": "main-s013-0",
+      "sha256": "9dcd7ab2a765e09631ffbc288a39c8734e7cf3267feda39fec77dde4cab8604f"
+    },
+    {
+      "job_id": "main-s014-0",
+      "sha256": "34e2cbcdc2ec13ce082e0f39b07067a14994b6f2c9a25d0d0925c17a68c19a50"
+    },
+    {
+      "job_id": "main-s015-0",
+      "sha256": "cdf5940e157e1b137d759ed178d0bd3259edf856227300b4f882da85d41de101"
+    },
+    {
+      "job_id": "main-s016-0",
+      "sha256": "3b8aa08b795780eaedb8f7c7774c0a11dd7df01526796d5d1d128e71548af47a"
+    },
+    {
+      "job_id": "main-s017-0",
+      "sha256": "575800271c7d4eca6de0b3331aea9eda0eb4a426b9a0c3c6a9085e3d5a2ec9d7"
+    },
+    {
+      "job_id": "main-s018-0",
+      "sha256": "fe9aa4a85f2bca5ed15fe556ed16e9c14086e50463cbcd05d41179516968c6d6"
+    },
+    {
+      "job_id": "main-s019-0",
+      "sha256": "f602e81145ca169c4869f80e761e5b164a7837df98098df9a39585a4259781f6"
+    },
+    {
+      "job_id": "main-s020-0",
+      "sha256": "fd5b5f93a6a261697c575bf6ed8f04908208ce7acb8de623d41914289d15c2bb"
+    },
+    {
+      "job_id": "main-s021-0",
+      "sha256": "75be9841875debd97dc754df72d514e1885de5e798a8f06cf013e543668312c5"
+    },
+    {
+      "job_id": "main-s022-0",
+      "sha256": "e62ee6f477bad41b7cfb64245979b39ec5245eb3180b6d43d1639f8af1b1fe0e"
+    },
+    {
+      "job_id": "main-s023-0",
+      "sha256": "2522d57db0617883b7fad1370a2f03a0243182fce5b908dac11a957f40ea0fc8"
+    },
+    {
+      "job_id": "main-s024-0",
+      "sha256": "79ea5a171caa81ef6db6a698fc1ae06fdd346c9bc30769e1dff24f9c19fe3659"
+    },
+    {
+      "job_id": "main-s025-0",
+      "sha256": "48cad22f8c846ea48a470c2947cee83153ca0390dfeee34a43cea12f03aebd6a"
+    },
+    {
+      "job_id": "main-s026-0",
+      "sha256": "f08b11ddd6dbb13cd231dca4b50c055c722a164b72bb557a7600f41a4398421f"
+    },
+    {
+      "job_id": "main-s027-0",
+      "sha256": "160bed7876e375f1e35b3231d80194cca39b5b5d44f1c4bfe95ce7527119c0db"
+    },
+    {
+      "job_id": "main-s028-0",
+      "sha256": "c4a78c7229749ce9463afa0a39a4a0c9f41c198ffccefbe37c835e95b3f75fd5"
+    },
+    {
+      "job_id": "main-s029-0",
+      "sha256": "a3ac8ed971436e66c69efdd38fa9f9e3acef60412eac3dc288991d323a1c4be0"
+    },
+    {
+      "job_id": "main-s030-0",
+      "sha256": "ad894e55510b29da8c882fbd5624fa02245d38af5ad08c6e893b66f7810cdfaf"
+    },
+    {
+      "job_id": "main-s031-0",
+      "sha256": "9679f7fc17a6239cb70f36d44ca52f3299859cd809650456e883e6f13fbfe9d8"
+    },
+    {
+      "job_id": "main-s032-0",
+      "sha256": "18253b9961ef6fded4428f0f96d0c0fc6c62abb8a8fea95c552994e4733945f1"
+    },
+    {
+      "job_id": "main-s033-0",
+      "sha256": "a1228046128a550826e3418549e567694b5f3427870a877ce11470279520e91c"
+    },
+    {
+      "job_id": "main-s034-0",
+      "sha256": "bc7116bb156098d7ce7f67ae3caf5e9db8dbbbee0435722e411a27c3dcad4cc6"
+    },
+    {
+      "job_id": "main-s035-0",
+      "sha256": "caae5bd765c042bf96b51fdc4513bdc041ab87863d7f086d11ddd0900e4b640f"
+    },
+    {
+      "job_id": "main-s036-0",
+      "sha256": "8a29618737ee1b9aa0f7ab0a1b1cf31beeb551b7398bea4a1745539122da0abc"
+    },
+    {
+      "job_id": "main-s037-0",
+      "sha256": "1aa5ce49d3732e801383dcfc21e16d8f77909237898b2dc2265abd9d797bb1df"
+    },
+    {
+      "job_id": "main-s038-0",
+      "sha256": "deaad393812d6628f0e641a1a38d00155f3173e2c8b9c93cfcc395e611d9194a"
+    },
+    {
+      "job_id": "main-s039-0",
+      "sha256": "e85f16f1fac27d457a1e400581b9a4f546f0fc46291eb9da3287a982745261a9"
+    },
+    {
+      "job_id": "main-s040-0",
+      "sha256": "dd7df16983ad2312582d272446ff6f3b857872e756672780eaa130ab37c8ae32"
+    },
+    {
+      "job_id": "main-s041-0",
+      "sha256": "f0026ccb221c5e5e8d03b834e89e7630a61f7cb8f10ff8e8346610be4d85c66d"
+    },
+    {
+      "job_id": "main-s042-0",
+      "sha256": "e3df900b66bc3e43c5d32108e0171ddd1049f23f1ace6945e52ac47f4a98cf88"
+    },
+    {
+      "job_id": "main-s043-0",
+      "sha256": "0752debe1c161c9202481edb612128ad1bf67fe776da1a401a6a972d4cfdbf71"
+    },
+    {
+      "job_id": "main-s044-0",
+      "sha256": "4cf880add674f0a9f35b7d7ce8c47056604d19dac1fb1f2cee2c7ff5fefebf27"
+    },
+    {
+      "job_id": "main-s045-0",
+      "sha256": "237cba76bb753eefcc2417666a17461dfc9bab760e51916650d640088d504690"
+    },
+    {
+      "job_id": "main-s046-0",
+      "sha256": "f595749555978a4c89c933e1354635081f24e9228c4f42d0ae65cf859ebfb2b7"
+    },
+    {
+      "job_id": "main-s047-0",
+      "sha256": "53925e524273004c6180d8cc23975748595af9e1601d46c78611a384516a92d9"
+    },
+    {
+      "job_id": "main-s048-0",
+      "sha256": "a8619148d801265848ba2ccaa1f9488f28379f03735d83c03411334796ba2e8a"
+    },
+    {
+      "job_id": "main-s049-0",
+      "sha256": "7e34ecdba9212d59e3c67de21a4bbee21521c232b21bf5f0215bb15897c622de"
+    },
+    {
+      "job_id": "main-s050-0",
+      "sha256": "1062fd24ef91b37698b1499b9e2448254f4f97f35425d0f076a1ca9d89cbfbfd"
+    },
+    {
+      "job_id": "main-s051-0",
+      "sha256": "b2e6c467689d31db9f7dcb3da5770c095b5e15e2cb3997cee1b4acd94ba8a878"
+    },
+    {
+      "job_id": "main-s052-0",
+      "sha256": "4c48bb7bcd48903edd4cb9fa528d8a9c61958f25bdec135f1232fead9442d24c"
+    },
+    {
+      "job_id": "main-s053-0",
+      "sha256": "6c5757f86c58fcec62e5d416ec87a889377a5f9b22ab8f5cf126ffb4704614b5"
+    },
+    {
+      "job_id": "main-s054-0",
+      "sha256": "84952a5849d987c50c62d9829ca4119bdeae588161eeb8d5d849682c980b616d"
+    },
+    {
+      "job_id": "main-s055-0",
+      "sha256": "29ea97594521807fcef1c74433580c132f656b9768c9b97b859a33410c804837"
+    },
+    {
+      "job_id": "main-s056-0",
+      "sha256": "daf5a8a68c2c20e8a1ad44d746ffd7cb34a692d343536e764489973478c7bd49"
+    },
+    {
+      "job_id": "main-s057-0",
+      "sha256": "6bcb490283478de5d56ceb929e3d0caee67869a00445b77c177a0ce5eccdf0fa"
+    },
+    {
+      "job_id": "main-s058-0",
+      "sha256": "35c24516ea328dce5af61ec26c1e4303c378d26bf3c6c354879f3d68a4537cfc"
+    },
+    {
+      "job_id": "main-s059-0",
+      "sha256": "84dbe0eb5888078f74701831005695c28f851aaf90dc68d4ddf5755987f5ed93"
+    },
+    {
+      "job_id": "main-s060-0",
+      "sha256": "83710155bcb488778d1c69b3afb53b19a9d5af6da3e971a14fe273edcfaf765f"
+    },
+    {
+      "job_id": "main-s061-0",
+      "sha256": "dd3fafc8de0335d17f298187ecd03af4d66a34bf2090b2cbccea256c10e8a416"
+    },
+    {
+      "job_id": "main-s062-0",
+      "sha256": "5ecf2b6ec20a0379f4a255df3589af866c234133fe721d5e78d19f4e1788baef"
+    },
+    {
+      "job_id": "main-s063-0",
+      "sha256": "e9ddc8d96210d0c63600237023cfbae33829245dbb7151ebcddc29b0d1749b21"
+    },
+    {
+      "job_id": "main-s064-0",
+      "sha256": "0dee97f871ef69a1bbcb52608856087b97884da5374bf9dbfcc5d69842aceff2"
+    },
+    {
+      "job_id": "main-s065-0",
+      "sha256": "4243de9a65bae346218d703202f9883f885481d7b6fb4e9dfd27dbad3dec2002"
+    },
+    {
+      "job_id": "main-s066-0",
+      "sha256": "d822c240dd8d6115ac4a005d899df281c01426e7e6e960c7b75c2b13e3751bb7"
+    },
+    {
+      "job_id": "main-s067-0",
+      "sha256": "ad5b0b3026ee0624aec4d01f50ac48e80d09ef554987aa68bb87beb1383830d7"
+    },
+    {
+      "job_id": "main-s068-0",
+      "sha256": "d2396b1d262b9a685034f091cf5481b9346d8c635226f02016ca270b6dc9ccfc"
+    },
+    {
+      "job_id": "main-s069-0",
+      "sha256": "b15d48debdb519d541923ddebb0a42cd7f4577ddd925a127783288df33be345e"
+    },
+    {
+      "job_id": "main-s070-0",
+      "sha256": "6ef9a8de7074faa29932c09839f780df07311280fbce046a16ce3c3b0d502457"
+    },
+    {
+      "job_id": "main-s071-0",
+      "sha256": "4557d3fe3b5482272a653a61cb8a3fbe2df1b458f81c5853dd546d8fed1603f6"
+    },
+    {
+      "job_id": "main-s072-0",
+      "sha256": "3820c1141bff801e36221adff0f72572ed833fd0fbced852f87456db865db1f1"
+    },
+    {
+      "job_id": "main-s073-0",
+      "sha256": "e2e3479276e83003737f08aba7514d62b08bd306628b80b2ab489b5b3a205e6c"
+    },
+    {
+      "job_id": "main-s074-0",
+      "sha256": "0855e7eac142ebf1a96d7439ff7d7b4d0c37cdd0b43db824c43df37e12cffdab"
+    },
+    {
+      "job_id": "main-s075-0",
+      "sha256": "7dd37c6dbad3d05e56d8f4d027e34b917ac58f029c23295b011625adb04483ed"
+    },
+    {
+      "job_id": "main-s076-0",
+      "sha256": "c8f1f99238875876c6518c00afc7b0b15719c62e6d0c9498db892da9f9733ab4"
+    },
+    {
+      "job_id": "main-s077-0",
+      "sha256": "f0f0276afe0a6ce6c5a849f31d4881d67cee4403af80f7ec36d20a1c894409b4"
+    },
+    {
+      "job_id": "main-s078-0",
+      "sha256": "97ebef44d0104ef9c39caefe384d9cc1021c3992fbf553782948c6320bb6fbe6"
+    },
+    {
+      "job_id": "main-s079-0",
+      "sha256": "1e0702c89b18878e9a2d2236fa8d01bfc6e232625efeaf2759f063dbd823de28"
+    },
+    {
+      "job_id": "main-s080-0",
+      "sha256": "979072d02e1c7481043145fce5b619428c361d3e8cef1f95c609dacd92a8e99f"
+    },
+    {
+      "job_id": "english-s001-0",
+      "sha256": "665fe229e88d6cee3e7945886b295b9dc8877686bb88ab7d332e6e813be40af3"
+    },
+    {
+      "job_id": "english-s009-0",
+      "sha256": "04be45119aa88c3e3f777d95dd6a9ab90ef07f23f5fd92e622dcb32afc80dc1f"
+    },
+    {
+      "job_id": "english-s017-0",
+      "sha256": "855d0aa0c5ad9e2372d05be9ddaeb4d3f93a1ccfddfd95881dde2f32fe052b5d"
+    },
+    {
+      "job_id": "english-s025-0",
+      "sha256": "7800ce29051bb484e8a89fdc67ab1369c914565198ddf46bb998cc51b02a3f57"
+    },
+    {
+      "job_id": "english-s033-0",
+      "sha256": "48cff1c0d873dcfd9e16368fb70329e0ed93a1122c037148bebbb0b39c5bd852"
+    },
+    {
+      "job_id": "english-s041-0",
+      "sha256": "26f24bb4a6879e65f93af494c5184a31d4df39113295a8843e70a28b1be45828"
+    },
+    {
+      "job_id": "english-s049-0",
+      "sha256": "a786f47ca19af12825edf98195ffe37468b003b686ab13ee4b0b64024b0e41ae"
+    },
+    {
+      "job_id": "english-s057-0",
+      "sha256": "91697b21c24479ae1c0b71e02dcb9ce303e4fc9aa99300ffaef671360fbe33ba"
+    },
+    {
+      "job_id": "english-s065-0",
+      "sha256": "9ac9335dfef14736f9438772386cfcbb17a49bebee40be9ccebb7ab57f8928c4"
+    },
+    {
+      "job_id": "english-s073-0",
+      "sha256": "b28cfe5719c952d18589ae5d4d32bb6d716554c1879b08e2950831941e91120b"
+    },
+    {
+      "job_id": "repeat-s017-1",
+      "sha256": "575800271c7d4eca6de0b3331aea9eda0eb4a426b9a0c3c6a9085e3d5a2ec9d7"
+    },
+    {
+      "job_id": "repeat-s025-1",
+      "sha256": "48cad22f8c846ea48a470c2947cee83153ca0390dfeee34a43cea12f03aebd6a"
+    },
+    {
+      "job_id": "repeat-s033-1",
+      "sha256": "a1228046128a550826e3418549e567694b5f3427870a877ce11470279520e91c"
+    },
+    {
+      "job_id": "repeat-s041-1",
+      "sha256": "f0026ccb221c5e5e8d03b834e89e7630a61f7cb8f10ff8e8346610be4d85c66d"
+    },
+    {
+      "job_id": "repeat-s049-1",
+      "sha256": "7e34ecdba9212d59e3c67de21a4bbee21521c232b21bf5f0215bb15897c622de"
+    },
+    {
+      "job_id": "repeat-s057-1",
+      "sha256": "6bcb490283478de5d56ceb929e3d0caee67869a00445b77c177a0ce5eccdf0fa"
+    },
+    {
+      "job_id": "repeat-s065-1",
+      "sha256": "4243de9a65bae346218d703202f9883f885481d7b6fb4e9dfd27dbad3dec2002"
+    },
+    {
+      "job_id": "repeat-s073-1",
+      "sha256": "e2e3479276e83003737f08aba7514d62b08bd306628b80b2ab489b5b3a205e6c"
+    },
+    {
+      "job_id": "repeat-s017-2",
+      "sha256": "575800271c7d4eca6de0b3331aea9eda0eb4a426b9a0c3c6a9085e3d5a2ec9d7"
+    },
+    {
+      "job_id": "repeat-s025-2",
+      "sha256": "48cad22f8c846ea48a470c2947cee83153ca0390dfeee34a43cea12f03aebd6a"
+    },
+    {
+      "job_id": "repeat-s033-2",
+      "sha256": "a1228046128a550826e3418549e567694b5f3427870a877ce11470279520e91c"
+    },
+    {
+      "job_id": "repeat-s041-2",
+      "sha256": "f0026ccb221c5e5e8d03b834e89e7630a61f7cb8f10ff8e8346610be4d85c66d"
+    },
+    {
+      "job_id": "repeat-s049-2",
+      "sha256": "7e34ecdba9212d59e3c67de21a4bbee21521c232b21bf5f0215bb15897c622de"
+    },
+    {
+      "job_id": "repeat-s057-2",
+      "sha256": "6bcb490283478de5d56ceb929e3d0caee67869a00445b77c177a0ce5eccdf0fa"
+    },
+    {
+      "job_id": "repeat-s065-2",
+      "sha256": "4243de9a65bae346218d703202f9883f885481d7b6fb4e9dfd27dbad3dec2002"
+    },
+    {
+      "job_id": "repeat-s073-2",
+      "sha256": "e2e3479276e83003737f08aba7514d62b08bd306628b80b2ab489b5b3a205e6c"
+    }
+  ],
+  "upstream_code_sha256": {
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "cli.py": "803e97f107748b76d8b79d20ea4d37d3bbf7b2ac4a65370333f8fccbbacd8ca3",
+    "data.py": "2d413a9bb1f59135baa6a590f33608fa825f28e8e3cbf09fbd5be2c866db457a",
+    "report.py": "e5b89c97e7a1b381e90b02d5f16e481dacfd44f2c2c4879dda5fb83f6ca63227",
+    "runner.py": "f6d6d7b0eadb98609c7427fa9235d3513d5cf43e3e9129d6180b13b9ddf64798",
+    "scoring.py": "0c3782418fda6dffcfcb9809941097a740ab26a4a431301956a3dbcaf3f5572e"
+  },
+  "evaluation_wrapper_sha256": "b2403e483fef2905e5bba0333041ff48fdf2d385979249dc8693ea3da9d6a0cc",
+  "packages": {
+    "typesafe-sdk": "0.7.1",
+    "httpx2": "2.13.1",
+    "pydantic": "2.13.5"
+  },
+  "comparison_limits": [
+    "One published synthetic Persian suite; correlated questions and paired scenarios",
+    "No calibration training or prompt selection on these cases",
+    "Local laptop-GPU HTTP timing is not a controlled comparison to hosted Jev timing",
+    "Choice/Score confidence is the maximum candidate probability, not calibrated correctness"
+  ],
+  "service": {
+    "version": "0.1.1",
+    "source_sha256": {
+      "__init__.py": "b6d87a4431c3d0de11cc824d2e3f2e6b4e267fe3c2aa07bf6b39098b85771d47",
+      "app.py": "949cb10750883a7b0ff80f58c856151d7ce2390a745342b40037461a2159c153",
+      "core.py": "1b8b4cce7260bcfbd4f8d8d0daf8ebfacabc9c202911f652674691fc30c8a1fd",
+      "models.py": "8a61790f307bc21decc4c768d853f34dca5edc0ba2f5c9c585a77339396338d3"
+    }
+  },
+  "stable_service": true,
+  "comparison_complete": true,
+  "original_run_files_sha256": {
+    "answers.jsonl": "41a180c6aa9cb14306e33e1255e22043b6e4e4d9a924f75671432c4006b30d6d",
+    "bev-provenance-after.json": "651bca896d256d781bc6e50acb6a8e34eddde55eed43225103cfc6275bbf292a",
+    "bev-provenance-before.json": "6c4dad1b762f63853a3f13b36a12e9382c20a335a2fa2222ea117c417ccc8782",
+    "completion.json": "7a2f719236d56dd9d9ef985bc1dc2fd4bcae11637cb2dabe1c493895828db15e",
+    "report.md": "e951afd573e8ad504581f0a3c951c2f7b5bf6fe5e55d029a8f682e337229b8d1",
+    "requests.jsonl": "8ce543493040f8b34ad846d953e78346ab20cf9522d1e23db4e48be06dc1cc32",
+    "run.json": "7ef3f8742e26a888643cb8f99cb7cc70de3b7ef2b931983c1d809a2214f1b335",
+    "summary.json": "e0ade65f81bf4064ed4df7a3ba34e1876494118cc7e1a7c751e16d515455cd4c"
+  },
+  "publication_note": "Public projection: source/data/request hashes and measurements retained. Original request text, gold, raw responses, host paths, process IDs and service addresses are not distributed. summary.json is byte-identical to the original scorer output.",
+  "adapter": "Original upstream planner/runner/scorer and real TypeSafe SDK to the Bev API; only state/questions/model sent; no gold in inference requests.",
+  "inference_parity": {
+    "unchanged_from_v0_1": {
+      "SYSTEM_PROMPT": true,
+      "build_prompt": true,
+      "score_field": true,
+      "_classify": true,
+      "decode_scores": true,
+      "normalize_scores": true
+    },
+    "extension": "Typed output adaptation only; existing choice FieldPlan mapping also unchanged"
+  }
+}

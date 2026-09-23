@@ -1,0 +1,10 @@
+include README.md LICENSE THIRD_PARTY_NOTICES.md
+include model-manifest.json release-notes.md CITATION.cff
+recursive-include bev *.py
+recursive-include docs *.md
+recursive-include scripts *.sh *.py
+recursive-include patches *.patch *.cpp *.md
+recursive-include tests *.py
+recursive-include licenses *
+recursive-include examples *.json *.md
+recursive-include evaluations *.json *.py *.md

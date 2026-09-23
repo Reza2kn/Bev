@@ -1,0 +1,10 @@
+{
+  "context": "The customer was charged twice for one purchase. Duplicate charges belong to the billing support queue.",
+  "schema": {
+    "route": {
+      "type": "enum",
+      "description": "Choose the support queue for the customer's reported problem.",
+      "choices": ["billing", "technical", "unknown"]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "bev-bonsai-27b",
+  "state": "The customer reports being charged twice. The service is working, with no outage. Support policy: duplicate charges go to billing. Priority levels: 0 for general questions, 1 for billing issues, 2 for outages.",
+  "questions": {
+    "queue": {
+      "type": "choice",
+      "instructions": "Choose the queue specified by the support policy.",
+      "criteria": {"billing": "Billing support", "technical": "Technical support", "general": "General information"}
+    },
+    "outage": {"type": "noul", "instructions": "Does the context report an outage?"},
+    "priority": {
+      "type": "score",
+      "instructions": "Assign the priority level specified by the policy for this problem.",
+      "criteria": ["General question", "Billing issue", "Outage"]
+    }
+  }
+}

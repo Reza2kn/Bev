@@ -1,0 +1,90 @@
+{
+  "started_utc": "2026-09-23T18:05:41.534203+00:00",
+  "scope": "isolated Stallion CPU-only package and runtime-script checks; no service restart or GPU inference",
+  "checks": [
+    {
+      "name": "create_environment",
+      "exit_code": 0
+    },
+    {
+      "name": "install_release_dependencies",
+      "exit_code": 0
+    },
+    {
+      "name": "shell_syntax_install-stallion.sh",
+      "exit_code": 0
+    },
+    {
+      "name": "shell_syntax_install.sh",
+      "exit_code": 0
+    },
+    {
+      "name": "shell_syntax_runtime-env.sh",
+      "exit_code": 0
+    },
+    {
+      "name": "shell_syntax_start-api.sh",
+      "exit_code": 0
+    },
+    {
+      "name": "shell_syntax_start-llama.sh",
+      "exit_code": 0
+    },
+    {
+      "name": "shell_syntax_start-services.sh",
+      "exit_code": 0
+    },
+    {
+      "name": "shell_syntax_stop-services.sh",
+      "exit_code": 0
+    },
+    {
+      "name": "unit_tests",
+      "exit_code": 0,
+      "output": ".....................................................                    [100%]\n53 passed in 0.25s\n"
+    },
+    {
+      "name": "dependency_consistency",
+      "exit_code": 0,
+      "output": "No broken requirements found.\n"
+    },
+    {
+      "name": "build_distributions",
+      "exit_code": 0
+    },
+    {
+      "name": "create_wheel_environment",
+      "exit_code": 0
+    },
+    {
+      "name": "install_wheel",
+      "exit_code": 0
+    },
+    {
+      "name": "wheel_import",
+      "exit_code": 0,
+      "output": "0.1.1\n0.1.1\n"
+    }
+  ],
+  "completed_utc": "2026-09-23T18:09:14.666904+00:00",
+  "status": "passed",
+  "native_installer": {
+    "exit_code": 0,
+    "validation": "Fresh isolated Prism source clone and 334-step host build with six jobs; CUDA loader compiled; CUDA device enumeration; editable API installation. No model server started and no model inference performed.",
+    "cached_assets": "Exact verified GGUF and upstream runtime were hardlinked from existing immutable files; this check exercised cache verification, not their large-file network download paths. Model notices and source were fetched.",
+    "runtime_revision": "9a9394a895b96003ca842a6041cb28ac49a108f7",
+    "cuda_device": [
+      "CUDA0: NVIDIA GeForce RTX 5080 Laptop GPU (15839 MiB, 3512 MiB free)"
+    ],
+    "script_sha256": {
+      "install-stallion.sh": "f99df78c1223285425cbeeda9df322bbfe842764353da4bd8d136a9236cc1715",
+      "install.sh": "11e5f33643e334b8e21b9689e1e2b0f405a018d0f67f0fd7d09ae6bd81f42aaf",
+      "runtime-env.sh": "915737684c7501033152af6e37033b5fc087bb05c093c7db4de8d9ab06120ad0",
+      "start-api.sh": "7072415ab699efa1912ddebc1fe3c9152206f2ce47a401688918ef5870f7b54b",
+      "start-llama.sh": "88f905b4d091e4dc49050a0441b4580b84241d6021df8755a2179d5441cdc409",
+      "start-services.sh": "52254054e2214bfb2b25f661e2ca8c0cdf8eca1bb9902cac9f148623a1fec7a4",
+      "stop-services.sh": "ec428b23ef9f5a2a569eed3d70460487379bae7d00b4ad587c9318f7b1891558"
+    }
+  },
+  "publication_note": "Public validation projection. Initial package-build hashes omitted because final release artifacts are rebuilt from the curated source and have their own SHA256SUMS. Private paths and raw build logs are not published."
+}

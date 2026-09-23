@@ -1,0 +1,8 @@
+{
+  "version": "0.1.0 initial API process",
+  "kind": "Source-derived bounded diagnostic, not official Decision Index",
+  "sample_sha256": "db4fed9913bb52d3a4962bf896f92a69602c9cc19a8de64b3cd06a2b9bf0e390",
+  "loaded_source_hashes": null,
+  "limitation": "The original process did not capture loaded-source hashes. Two later reliability fixes changed on-disk source after process startup: float32 mass tolerance and sibling-request cancellation. Neither changed prompts, weights, or scoring math. This diagnostic is historical evidence, not a fresh validation of v0.1.1.",
+  "selection": "Fixed sample selected before inference from public source datasets using Decision Index normalizers. No benchmark training or prompt selection."
+}

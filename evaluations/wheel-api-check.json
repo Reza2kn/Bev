@@ -1,0 +1,333 @@
+{
+  "passed": true,
+  "method": "Clean wheel installation served from a directory outside the source checkout; temporary API reused existing pinned native GPU server; API stopped afterward.",
+  "version": "0.1.1",
+  "source_matches_benchmark": true,
+  "source_sha256": {
+    "__init__.py": "b6d87a4431c3d0de11cc824d2e3f2e6b4e267fe3c2aa07bf6b39098b85771d47",
+    "app.py": "949cb10750883a7b0ff80f58c856151d7ce2390a745342b40037461a2159c153",
+    "core.py": "1b8b4cce7260bcfbd4f8d8d0daf8ebfacabc9c202911f652674691fc30c8a1fd",
+    "models.py": "8a61790f307bc21decc4c768d853f34dca5edc0ba2f5c9c585a77339396338d3"
+  },
+  "examples": {
+    "support-request.json": {
+      "model": "bev-bonsai-27b",
+      "backend": "prism_llama_cpp",
+      "backend_build": "b1-9a9394a",
+      "mode": "llama_full_vocab_categorical_scoring",
+      "strategy": "batch",
+      "requested_strategy": "auto",
+      "strategy_implementation": "bounded_concurrent_native_requests",
+      "parsed_json": {
+        "route": "billing"
+      },
+      "fields": {
+        "route": {
+          "value": "billing",
+          "selected_value": "billing",
+          "selected_label": "A",
+          "selected_token_id": 32,
+          "probability": 0.9989061260210375,
+          "abstained": false,
+          "candidate_probability_mass": 0.9086667884355636,
+          "candidates": [
+            {
+              "value": "billing",
+              "label": "A",
+              "token_id": 32,
+              "probability": 0.9989061260210375,
+              "logprob": -0.09687129408121109
+            },
+            {
+              "value": "technical",
+              "label": "B",
+              "token_id": 33,
+              "probability": 0.0008516050271616897,
+              "logprob": -7.1641645431518555
+            },
+            {
+              "value": "unknown",
+              "label": "C",
+              "token_id": 34,
+              "probability": 0.0002422689518008115,
+              "logprob": -8.421238899230957
+            }
+          ],
+          "elapsed_ms": 408.331,
+          "queue_ms": 0.003,
+          "backend_requests": 1,
+          "score_retrieval": "selected_token_logprobs",
+          "requested_top_n": 3,
+          "prompt_tokens": 142,
+          "backend_timings": {
+            "cache_n": 0,
+            "prompt_n": 142,
+            "prompt_ms": 284.805,
+            "prompt_per_token_ms": 2.005669014084507,
+            "prompt_per_second": 498.58675233931984,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "predicted_per_token_ms": 0.0,
+            "predicted_per_second": 0.0
+          },
+          "usage": {
+            "prompt_tokens": 142,
+            "completion_tokens": 1,
+            "total_tokens": 143
+          }
+        }
+      },
+      "scores_are_calibrated": false,
+      "score_source": "pre_sampling_full_vocabulary_logprobs",
+      "selected_token_logprobs": true,
+      "score_temperature": 1.0,
+      "abstained_fields": [],
+      "elapsed_ms": 412.751,
+      "prompt_preparation_ms": 4.37,
+      "backend_requests": 1,
+      "scored_fields": 1,
+      "max_prompt_tokens": 142,
+      "max_model_len": 16384,
+      "backend_slots": 2,
+      "cache_block_tokens": null,
+      "usage": {
+        "prompt_tokens": 142,
+        "completion_tokens": 1,
+        "total_tokens": 143
+      }
+    },
+    "systemone-request.json": {
+      "model": "bev-bonsai-27b",
+      "answers": {
+        "queue": {
+          "type": "choice",
+          "choice": "billing",
+          "probabilities": {
+            "billing": 0.9981141129355442,
+            "technical": 0.0017793923442547745,
+            "general": 0.00010649472020099965
+          },
+          "confidence": 0.9981141129355442
+        },
+        "outage": {
+          "type": "noul",
+          "noul": 0.002480204845362905
+        },
+        "priority": {
+          "type": "score",
+          "score": 1.0002383132357986,
+          "probabilities": {
+            "0": 0.0007058337315065528,
+            "1": 0.9983500193011885,
+            "2": 0.0009441469673050024
+          },
+          "legend": {
+            "0": "General question",
+            "1": "Billing issue",
+            "2": "Outage"
+          },
+          "confidence": 0.9983500193011885
+        }
+      },
+      "usage": {
+        "input_tokens": 547,
+        "output_tokens": 3,
+        "prompt_tokens": 547,
+        "completion_tokens": 3,
+        "total_tokens": 550
+      },
+      "usage_accounting": "logical_prompt_and_scoring_tokens_including_retries",
+      "scores_are_calibrated": false,
+      "confidence_definition": "maximum_candidate_relative_probability",
+      "evaluation_trace": {
+        "model": "bev-bonsai-27b",
+        "backend": "prism_llama_cpp",
+        "backend_build": "b1-9a9394a",
+        "mode": "llama_full_vocab_categorical_scoring",
+        "strategy": "batch",
+        "requested_strategy": "auto",
+        "strategy_implementation": "bounded_concurrent_native_requests",
+        "parsed_json": {
+          "queue": "billing",
+          "outage": false,
+          "priority": "1"
+        },
+        "fields": {
+          "queue": {
+            "value": "billing",
+            "selected_value": "billing",
+            "selected_label": "A",
+            "selected_token_id": 32,
+            "probability": 0.9981141129355442,
+            "abstained": false,
+            "candidate_probability_mass": 0.8587864055938211,
+            "candidates": [
+              {
+                "value": "billing",
+                "label": "A",
+                "token_id": 32,
+                "probability": 0.9981141129355442,
+                "logprob": -0.1541227102279663
+              },
+              {
+                "value": "technical",
+                "label": "B",
+                "token_id": 33,
+                "probability": 0.0017793923442547745,
+                "logprob": -6.483718395233154
+              },
+              {
+                "value": "general",
+                "label": "C",
+                "token_id": 34,
+                "probability": 0.00010649472020099965,
+                "logprob": -9.299650192260742
+              }
+            ],
+            "elapsed_ms": 668.761,
+            "queue_ms": 0.002,
+            "backend_requests": 1,
+            "score_retrieval": "selected_token_logprobs",
+            "requested_top_n": 3,
+            "prompt_tokens": 190,
+            "backend_timings": {
+              "cache_n": 0,
+              "prompt_n": 190,
+              "prompt_ms": 580.518,
+              "prompt_per_token_ms": 3.0553578947368423,
+              "prompt_per_second": 327.2938995862316,
+              "predicted_n": 1,
+              "predicted_ms": 0.001,
+              "predicted_per_token_ms": 0.0,
+              "predicted_per_second": 0.0
+            },
+            "usage": {
+              "prompt_tokens": 190,
+              "completion_tokens": 1,
+              "total_tokens": 191
+            }
+          },
+          "outage": {
+            "value": false,
+            "selected_value": false,
+            "selected_label": "B",
+            "selected_token_id": 33,
+            "probability": 0.9975197951546371,
+            "abstained": false,
+            "candidate_probability_mass": 0.9867459180461733,
+            "candidates": [
+              {
+                "value": true,
+                "label": "A",
+                "token_id": 32,
+                "probability": 0.002480204845362905,
+                "logprob": -6.012756824493408
+              },
+              {
+                "value": false,
+                "label": "B",
+                "token_id": 33,
+                "probability": 0.9975197951546371,
+                "logprob": -0.015825986862182617
+              }
+            ],
+            "elapsed_ms": 666.695,
+            "queue_ms": 0.001,
+            "backend_requests": 1,
+            "score_retrieval": "selected_token_logprobs",
+            "requested_top_n": 2,
+            "prompt_tokens": 164,
+            "backend_timings": {
+              "cache_n": 0,
+              "prompt_n": 164,
+              "prompt_ms": 583.47,
+              "prompt_per_token_ms": 3.5577439024390247,
+              "prompt_per_second": 281.07700481601455,
+              "predicted_n": 1,
+              "predicted_ms": 0.001,
+              "predicted_per_token_ms": 0.0,
+              "predicted_per_second": 0.0
+            },
+            "usage": {
+              "prompt_tokens": 164,
+              "completion_tokens": 1,
+              "total_tokens": 165
+            }
+          },
+          "priority": {
+            "value": "1",
+            "selected_value": "1",
+            "selected_label": "B",
+            "selected_token_id": 33,
+            "probability": 0.9983500193011885,
+            "abstained": false,
+            "candidate_probability_mass": 0.9648334149708054,
+            "candidates": [
+              {
+                "value": "0",
+                "label": "A",
+                "token_id": 32,
+                "probability": 0.0007058337315065528,
+                "logprob": -7.291930675506592
+              },
+              {
+                "value": "1",
+                "label": "B",
+                "token_id": 33,
+                "probability": 0.9983500193011885,
+                "logprob": -0.037451162934303284
+              },
+              {
+                "value": "2",
+                "label": "C",
+                "token_id": 34,
+                "probability": 0.0009441469673050024,
+                "logprob": -7.001028537750244
+              }
+            ],
+            "elapsed_ms": 1076.032,
+            "queue_ms": 666.574,
+            "backend_requests": 1,
+            "score_retrieval": "selected_token_logprobs",
+            "requested_top_n": 3,
+            "prompt_tokens": 193,
+            "backend_timings": {
+              "cache_n": 0,
+              "prompt_n": 193,
+              "prompt_ms": 322.763,
+              "prompt_per_token_ms": 1.6723471502590672,
+              "prompt_per_second": 597.9619720971734,
+              "predicted_n": 1,
+              "predicted_ms": 0.001,
+              "predicted_per_token_ms": 0.0,
+              "predicted_per_second": 0.0
+            },
+            "usage": {
+              "prompt_tokens": 193,
+              "completion_tokens": 1,
+              "total_tokens": 194
+            }
+          }
+        },
+        "scores_are_calibrated": false,
+        "score_source": "pre_sampling_full_vocabulary_logprobs",
+        "selected_token_logprobs": true,
+        "score_temperature": 1.0,
+        "abstained_fields": [],
+        "elapsed_ms": 1083.211,
+        "prompt_preparation_ms": 6.793,
+        "backend_requests": 3,
+        "scored_fields": 3,
+        "max_prompt_tokens": 193,
+        "max_model_len": 16384,
+        "backend_slots": 2,
+        "cache_block_tokens": null,
+        "usage": {
+          "prompt_tokens": 547,
+          "completion_tokens": 3,
+          "total_tokens": 550
+        }
+      }
+    }
+  }
+}

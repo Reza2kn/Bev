@@ -1,0 +1,325 @@
+{
+  "kind": "documentation example checks, not benchmark",
+  "passed": true,
+  "outputs": {
+    "support-request.json": {
+      "model": "bev-bonsai-27b",
+      "backend": "prism_llama_cpp",
+      "backend_build": "b1-9a9394a",
+      "mode": "llama_full_vocab_categorical_scoring",
+      "strategy": "batch",
+      "requested_strategy": "auto",
+      "strategy_implementation": "bounded_concurrent_native_requests",
+      "parsed_json": {
+        "route": "billing"
+      },
+      "fields": {
+        "route": {
+          "value": "billing",
+          "selected_value": "billing",
+          "selected_label": "A",
+          "selected_token_id": 32,
+          "probability": 0.9989061260210375,
+          "abstained": false,
+          "candidate_probability_mass": 0.9086667884355636,
+          "candidates": [
+            {
+              "value": "billing",
+              "label": "A",
+              "token_id": 32,
+              "probability": 0.9989061260210375,
+              "logprob": -0.09687129408121109
+            },
+            {
+              "value": "technical",
+              "label": "B",
+              "token_id": 33,
+              "probability": 0.0008516050271616897,
+              "logprob": -7.1641645431518555
+            },
+            {
+              "value": "unknown",
+              "label": "C",
+              "token_id": 34,
+              "probability": 0.0002422689518008115,
+              "logprob": -8.421238899230957
+            }
+          ],
+          "elapsed_ms": 474.855,
+          "queue_ms": 0.003,
+          "backend_requests": 1,
+          "score_retrieval": "selected_token_logprobs",
+          "requested_top_n": 3,
+          "prompt_tokens": 142,
+          "backend_timings": {
+            "cache_n": 0,
+            "prompt_n": 142,
+            "prompt_ms": 284.624,
+            "prompt_per_token_ms": 2.0043943661971833,
+            "prompt_per_second": 498.90381696554044,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "predicted_per_token_ms": 0.0,
+            "predicted_per_second": 0.0
+          },
+          "usage": {
+            "prompt_tokens": 142,
+            "completion_tokens": 1,
+            "total_tokens": 143
+          }
+        }
+      },
+      "scores_are_calibrated": false,
+      "score_source": "pre_sampling_full_vocabulary_logprobs",
+      "selected_token_logprobs": true,
+      "score_temperature": 1.0,
+      "abstained_fields": [],
+      "elapsed_ms": 480.079,
+      "prompt_preparation_ms": 5.143,
+      "backend_requests": 1,
+      "scored_fields": 1,
+      "max_prompt_tokens": 142,
+      "max_model_len": 16384,
+      "backend_slots": 2,
+      "cache_block_tokens": null,
+      "usage": {
+        "prompt_tokens": 142,
+        "completion_tokens": 1,
+        "total_tokens": 143
+      }
+    },
+    "systemone-request.json": {
+      "model": "bev-bonsai-27b",
+      "answers": {
+        "queue": {
+          "type": "choice",
+          "choice": "billing",
+          "probabilities": {
+            "billing": 0.9982291183228973,
+            "technical": 0.0016640844610198414,
+            "general": 0.00010679721608279538
+          },
+          "confidence": 0.9982291183228973
+        },
+        "outage": {
+          "type": "noul",
+          "noul": 0.002787811663481365
+        },
+        "priority": {
+          "type": "score",
+          "score": 1.0002383132357986,
+          "probabilities": {
+            "0": 0.0007058337315065528,
+            "1": 0.9983500193011885,
+            "2": 0.0009441469673050024
+          },
+          "legend": {
+            "0": "General question",
+            "1": "Billing issue",
+            "2": "Outage"
+          },
+          "confidence": 0.9983500193011885
+        }
+      },
+      "usage": {
+        "input_tokens": 547,
+        "output_tokens": 3,
+        "prompt_tokens": 547,
+        "completion_tokens": 3,
+        "total_tokens": 550
+      },
+      "usage_accounting": "logical_prompt_and_scoring_tokens_including_retries",
+      "scores_are_calibrated": false,
+      "confidence_definition": "maximum_candidate_relative_probability",
+      "evaluation_trace": {
+        "model": "bev-bonsai-27b",
+        "backend": "prism_llama_cpp",
+        "backend_build": "b1-9a9394a",
+        "mode": "llama_full_vocab_categorical_scoring",
+        "strategy": "batch",
+        "requested_strategy": "auto",
+        "strategy_implementation": "bounded_concurrent_native_requests",
+        "parsed_json": {
+          "queue": "billing",
+          "outage": false,
+          "priority": "1"
+        },
+        "fields": {
+          "queue": {
+            "value": "billing",
+            "selected_value": "billing",
+            "selected_label": "A",
+            "selected_token_id": 32,
+            "probability": 0.9982291183228973,
+            "abstained": false,
+            "candidate_probability_mass": 0.8655803643819256,
+            "candidates": [
+              {
+                "value": "billing",
+                "label": "A",
+                "token_id": 32,
+                "probability": 0.9982291183228973,
+                "logprob": -0.14612750709056854
+              },
+              {
+                "value": "technical",
+                "label": "B",
+                "token_id": 33,
+                "probability": 0.0016640844610198414,
+                "logprob": -6.542835235595703
+              },
+              {
+                "value": "general",
+                "label": "C",
+                "token_id": 34,
+                "probability": 0.00010679721608279538,
+                "logprob": -9.288933753967285
+              }
+            ],
+            "elapsed_ms": 576.291,
+            "queue_ms": 0.002,
+            "backend_requests": 1,
+            "score_retrieval": "selected_token_logprobs",
+            "requested_top_n": 3,
+            "prompt_tokens": 190,
+            "backend_timings": {
+              "cache_n": 0,
+              "prompt_n": 190,
+              "prompt_ms": 572.964,
+              "prompt_per_token_ms": 3.0156000000000005,
+              "prompt_per_second": 331.60896670645974,
+              "predicted_n": 1,
+              "predicted_ms": 0.001,
+              "predicted_per_token_ms": 0.0,
+              "predicted_per_second": 0.0
+            },
+            "usage": {
+              "prompt_tokens": 190,
+              "completion_tokens": 1,
+              "total_tokens": 191
+            }
+          },
+          "outage": {
+            "value": false,
+            "selected_value": false,
+            "selected_label": "B",
+            "selected_token_id": 33,
+            "probability": 0.9972121883365187,
+            "abstained": false,
+            "candidate_probability_mass": 0.9862726128870609,
+            "candidates": [
+              {
+                "value": true,
+                "label": "A",
+                "token_id": 32,
+                "probability": 0.002787811663481365,
+                "logprob": -5.896320819854736
+              },
+              {
+                "value": false,
+                "label": "B",
+                "token_id": 33,
+                "probability": 0.9972121883365187,
+                "logprob": -0.01661418378353119
+              }
+            ],
+            "elapsed_ms": 578.692,
+            "queue_ms": 0.001,
+            "backend_requests": 1,
+            "score_retrieval": "selected_token_logprobs",
+            "requested_top_n": 2,
+            "prompt_tokens": 164,
+            "backend_timings": {
+              "cache_n": 0,
+              "prompt_n": 164,
+              "prompt_ms": 570.737,
+              "prompt_per_token_ms": 3.480103658536585,
+              "prompt_per_second": 287.34776262972264,
+              "predicted_n": 1,
+              "predicted_ms": 0.001,
+              "predicted_per_token_ms": 0.0,
+              "predicted_per_second": 0.0
+            },
+            "usage": {
+              "prompt_tokens": 164,
+              "completion_tokens": 1,
+              "total_tokens": 165
+            }
+          },
+          "priority": {
+            "value": "1",
+            "selected_value": "1",
+            "selected_label": "B",
+            "selected_token_id": 33,
+            "probability": 0.9983500193011885,
+            "abstained": false,
+            "candidate_probability_mass": 0.9648334149708054,
+            "candidates": [
+              {
+                "value": "0",
+                "label": "A",
+                "token_id": 32,
+                "probability": 0.0007058337315065528,
+                "logprob": -7.291930675506592
+              },
+              {
+                "value": "1",
+                "label": "B",
+                "token_id": 33,
+                "probability": 0.9983500193011885,
+                "logprob": -0.037451162934303284
+              },
+              {
+                "value": "2",
+                "label": "C",
+                "token_id": 34,
+                "probability": 0.0009441469673050024,
+                "logprob": -7.001028537750244
+              }
+            ],
+            "elapsed_ms": 977.959,
+            "queue_ms": 576.01,
+            "backend_requests": 1,
+            "score_retrieval": "selected_token_logprobs",
+            "requested_top_n": 3,
+            "prompt_tokens": 193,
+            "backend_timings": {
+              "cache_n": 0,
+              "prompt_n": 193,
+              "prompt_ms": 314.069,
+              "prompt_per_token_ms": 1.627300518134715,
+              "prompt_per_second": 614.5146448710315,
+              "predicted_n": 1,
+              "predicted_ms": 0.001,
+              "predicted_per_token_ms": 0.0,
+              "predicted_per_second": 0.0
+            },
+            "usage": {
+              "prompt_tokens": 193,
+              "completion_tokens": 1,
+              "total_tokens": 194
+            }
+          }
+        },
+        "scores_are_calibrated": false,
+        "score_source": "pre_sampling_full_vocabulary_logprobs",
+        "selected_token_logprobs": true,
+        "score_temperature": 1.0,
+        "abstained_fields": [],
+        "elapsed_ms": 983.191,
+        "prompt_preparation_ms": 4.88,
+        "backend_requests": 3,
+        "scored_fields": 3,
+        "max_prompt_tokens": 193,
+        "max_model_len": 16384,
+        "backend_slots": 2,
+        "cache_block_tokens": null,
+        "usage": {
+          "prompt_tokens": 547,
+          "completion_tokens": 3,
+          "total_tokens": 550
+        }
+      }
+    }
+  }
+}

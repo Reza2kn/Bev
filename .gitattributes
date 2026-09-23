@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.gguf binary
+*.whl binary
+*.gz binary
+# Preserve upstream notices and unified-diff context bytes exactly.
+licenses/* -whitespace
+patches/*.patch -whitespace

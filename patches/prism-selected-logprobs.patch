@@ -1,0 +1,111 @@
+diff --git a/tools/server/server-context.cpp b/tools/server/server-context.cpp
+index a9edbd7..119280d 100644
+--- a/tools/server/server-context.cpp
++++ b/tools/server/server-context.cpp
+@@ -1864,6 +1864,27 @@ private:
+     void populate_token_probs(const server_slot & slot, completion_token_output & result, bool post_sampling, bool special, int idx) const {
+         const size_t n_probs_request = slot.task->params.sampling.n_probs;
+ 
++        const auto & selected_ids = slot.task->params.selected_token_ids;
++        if (!selected_ids.empty()) {
++            // n_top=0 retains full-vocabulary softmax without sorting or serializing
++            // the entire vocabulary. Never apply a candidate-only normalization.
++            const auto cur = get_token_probabilities(ctx_tgt, idx, 0);
++            std::vector<float> probabilities(llama_vocab_n_tokens(vocab), -1.0f);
++            for (const auto & token : cur) {
++                GGML_ASSERT(token.id >= 0 && static_cast<size_t>(token.id) < probabilities.size());
++                probabilities[token.id] = token.p;
++                if (token.id == result.tok) {
++                    result.prob = token.p;
++                }
++            }
++            result.probs.reserve(selected_ids.size());
++            for (const auto id : selected_ids) {
++                GGML_ASSERT(probabilities[id] >= 0.0f); // validated IDs + pre-sampling logits
++                result.probs.push_back({id, common_token_to_piece(ctx_tgt, id, special), probabilities[id]});
++            }
++            return;
++        }
++
+         if (post_sampling) {
+             const auto * cur_p = common_sampler_get_candidates(slot.smpl.get(), true);
+             const size_t max_probs = cur_p->size;
+@@ -4482,6 +4503,7 @@ static json get_res_props(const server_context_meta & meta, const common_params
+     std::string tmpl_tools   = common_chat_templates_source(meta.chat_params.tmpls.get(), "tool_use");
+ 
+     json props = {
++        { "bev_selected_token_logprobs", 1 },
+         { "default_generation_settings", default_generation_settings_for_props },
+         { "total_slots",                 params.n_parallel },
+         { "model_alias",                 meta.model_name },
+diff --git a/tools/server/server-schema.cpp b/tools/server/server-schema.cpp
+index 64b9251..228864e 100644
+--- a/tools/server/server-schema.cpp
++++ b/tools/server/server-schema.cpp
+@@ -190,6 +190,32 @@ std::vector<std::unique_ptr<field>> make_llama_cmpl_schema(const common_params &
+     add((new field_bool("post_sampling_probs", params.post_sampling_probs))
+         ->set_desc("Return probabilities of top n_probs tokens after applying the sampling chain"));
+ 
++    add((new field_json("selected_token_ids"))
++        ->set_desc("Bev: return full-vocabulary pre-sampling logprobs for these token IDs in request order")
++        ->set_handler([](field_eval_context & ctx, const json & data) {
++            const auto & ids = data.at("selected_token_ids");
++            if (!ids.is_array() || ids.empty() || ids.size() > 4096) {
++                throw std::invalid_argument("selected_token_ids must be a nonempty array of at most 4096 unique token IDs");
++            }
++            if (ctx.params.post_sampling_probs) {
++                throw std::invalid_argument("selected_token_ids requires post_sampling_probs=false");
++            }
++            const int64_t n_vocab = llama_vocab_n_tokens(ctx.vocab);
++            std::unordered_set<llama_token> seen;
++            for (const auto & value : ids) {
++                if (!value.is_number_integer()) {
++                    throw std::invalid_argument("selected_token_ids entries must be integers");
++                }
++                const int64_t id = value.get<int64_t>();
++                if (id < 0 || id >= n_vocab || !seen.insert(static_cast<llama_token>(id)).second) {
++                    throw std::invalid_argument("selected_token_ids entries must be unique and within vocabulary bounds");
++                }
++                ctx.params.selected_token_ids.push_back(static_cast<llama_token>(id));
++            }
++            // Existing pre-sampling path disables backend sampling and carries results.
++            ctx.params.sampling.n_probs = static_cast<int32_t>(ids.size());
++        }));
++
+     //
+     // Speculative decoding params
+     //
+diff --git a/tools/server/server-task.cpp b/tools/server/server-task.cpp
+index 0d3beb3..eba09a0 100644
+--- a/tools/server/server-task.cpp
++++ b/tools/server/server-task.cpp
+@@ -72,6 +72,7 @@ json task_params::to_json(bool only_metrics) const {
+             {"ignore_eos",                sampling.ignore_eos},
+             {"stream",                    stream},
+             {"n_probs",                   sampling.n_probs},
++            {"selected_token_ids",        selected_token_ids},
+             {"min_keep",                  sampling.min_keep},
+             {"chat_format",               common_chat_format_name(chat_parser_params.format)},
+             {"reasoning_format",          common_reasoning_format_name(chat_parser_params.reasoning_format)},
+@@ -127,6 +128,7 @@ json task_params::to_json(bool only_metrics) const {
+         {"stream",                    stream},
+         {"logit_bias",                format_logit_bias(sampling.logit_bias)},
+         {"n_probs",                   sampling.n_probs},
++        {"selected_token_ids",        selected_token_ids},
+         {"min_keep",                  sampling.min_keep},
+         {"grammar",                   common_grammar_value(sampling.grammar)},
+         {"grammar_lazy",              sampling.grammar_lazy},
+diff --git a/tools/server/server-task.h b/tools/server/server-task.h
+index 9c99143..339a76e 100644
+--- a/tools/server/server-task.h
++++ b/tools/server/server-task.h
+@@ -75,6 +75,9 @@ struct task_params {
+     bool timings_per_token   = false;
+     bool post_sampling_probs = false;
+ 
++    // Bev extension: return only these IDs, normalized against the full vocabulary.
++    std::vector<llama_token> selected_token_ids;
++
+     struct common_params_sampling sampling;
+     struct common_params_speculative speculative;
+ 
